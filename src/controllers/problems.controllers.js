@@ -1,11 +1,12 @@
 const NotImplemented=require('../errors/notImplemented.error');
+const BadRequest=require('../errors/badrequest.error')
 const{ StatusCodes }=require('http-status-codes');
 function ping (req,res){
     return res.json({message:"ping service of routing is up"});
 }
 function addProblem(req,res){
     try {
-        throw new NotImplemented('addproblem')
+        throw new BadRequest('Problem Name',{missing:["Problem Name"]})
     } catch (error) {
         next(error);
     }
